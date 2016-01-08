@@ -15,11 +15,11 @@ append_to_file() {
   local file="$1"
   local text="$2"
 
-  if [ "$file" = "$HOME/.zshrc" ]; then
-    if [ -w "$HOME/.zshrc.local" ]; then
-      file="$HOME/.zshrc.local"
+  if [ "$file" = "$HOME/.bashrc" ]; then
+    if [ -w "$HOME/.bashrc.local" ]; then
+      file="$HOME/.bashrc.local"
     else
-      file="$HOME/.zshrc"
+      file="$HOME/.bashrc"
     fi
   fi
 
@@ -37,18 +37,18 @@ if [ ! -d "$HOME/.bin/" ]; then
   mkdir "$HOME/.bin"
 fi
 
-if [ ! -f "$HOME/.zshrc" ]; then
-  touch "$HOME/.zshrc"
+if [ ! -f "$HOME/.bashrc" ]; then
+  touch "$HOME/.bashrc"
 fi
 
 # shellcheck disable=SC2016
-append_to_file "$HOME/.zshrc" 'export PATH="$HOME/.bin:$PATH"'
+append_to_file "$HOME/.bashrc" 'export PATH="$HOME/.bin:$PATH"'
 
 case "$SHELL" in
-  */zsh) : ;;
+  */bash) : ;;
   *)
-    fancy_echo "Changing your shell to zsh ..."
-      chsh -s "$(which zsh)"
+    fancy_echo "Changing your shell to bash ..."
+      chsh -s "$(which bash)"
     ;;
 esac
 
@@ -126,7 +126,7 @@ if ! command -v brew >/dev/null; then
       'https://raw.githubusercontent.com/Homebrew/install/master/install' | ruby
 
     # shellcheck disable=SC2016
-    append_to_file "$HOME/.zshrc" 'export PATH="/usr/local/bin:$PATH"'
+    append_to_file "$HOME/.bashrc" 'export PATH="/usr/local/bin:$PATH"'
 else
   fancy_echo "Homebrew already installed. Skipping ..."
 fi
@@ -150,7 +150,7 @@ fi
 
 brew_install_or_upgrade 'hub'
 # shellcheck disable=SC2016
-append_to_file "$HOME/.zshrc" 'eval "$(hub alias -s)"'
+append_to_file "$HOME/.bashrc" 'eval "$(hub alias -s)"'
 
 append_to_file "$HOME/.gemrc" 'gem: --no-document'
 
@@ -192,6 +192,28 @@ brew_cask_install 'flux'
 brew_cask_install 'github-desktop'
 brew_cask_install 'sublime-text3'
 
+# start custom configs
+brew_tap 'homebrew/science'
+
+brew_install_or_upgrade 'r'
+
+brew_install_or_upgrade 'Caskroom/cask/rstudio'
+
+brew_cask_install 'slack'
+
+brew_cask_install 'iterm'
+
+brew_cask_install 'tabula'
+
+# pgadmin
+# https://github.com/caskroom/homebrew-cask/blob/master/Casks/pgadmin3.rb
+
+# open refine
+# https://github.com/caskroom/homebrew-cask/blob/master/Casks/google-refine.rb
+
+
+# end custom configs
+
 if [ -f "$HOME/.laptop.local" ]; then
   . "$HOME/.laptop.local"
 fi
@@ -202,11 +224,11 @@ append_to_file "$HOME/.rvm/gemsets/global.gems" 'bundler'
 # display pwd in orange, current ruby version or gemset in green,
 # and set prompt character to $
 # shellcheck disable=SC2016
-append_to_file "$HOME/.zshrc" 'precmd () { PS1="%{%F{166}%}[%~] %{%F{65}%}$(rvm-prompt) %{%f%}$ " }'
+append_to_file "$HOME/.bashrc" 'precmd () { PS1="%{%F{166}%}[%~] %{%F{65}%}$(rvm-prompt) %{%f%}$ " }'
 
 # display directories and files in different colors when running ls
-append_to_file "$HOME/.zshrc" 'export CLICOLOR=1;'
-append_to_file "$HOME/.zshrc" 'export LSCOLORS=exfxcxdxbxegedabagacad;'
+append_to_file "$HOME/.bashrc" 'export CLICOLOR=1;'
+append_to_file "$HOME/.bashrc" 'export LSCOLORS=exfxcxdxbxegedabagacad;'
 
 if app_is_installed 'GitHub'; then
   fancy_echo "It looks like you've already configured your GitHub SSH keys."
