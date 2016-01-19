@@ -1,5 +1,9 @@
 #!/bin/sh
 
+#install with
+#bash mac 2>&1 | tee ~/laptop.log && source ~/.rvm/scripts/rvm
+
+
 # Welcome to the monfresh laptop script!
 # Be prepared to turn your laptop (or desktop)
 # into an awesome development machine.
@@ -198,12 +202,20 @@ brew_cask_install 'sublime-text3'
 # brew search xxxxxx
 
 
-# installs old version of java needed for RStudio
+# installs old version of java needed for RStudio. ## ONLY USE IF rjava section below fails
 brew_cask_install 'java6'
 
 brew_tap 'homebrew/science'
 
 brew_install_or_upgrade 'r'
+
+#To enable rJava support, run the following command:
+#R CMD javareconf JAVA_CPPFLAGS=-I/System/Library/Frameworks/JavaVM.framework/Headers
+
+#If you've installed a version of Java other than the default, you might need to instead use:
+#  R CMD javareconf JAVA_CPPFLAGS="-I/System/Library/Frameworks/JavaVM.framework/Headers -I/Library/Java/JavaVirtualMachines/jdk<version>.jdk/"
+#(where <version> can be found by running `java -version`, `/usr/libexec/java_home`, or `locate jni.h`), or:
+#  R CMD javareconf JAVA_CPPFLAGS="-I/System/Library/Frameworks/JavaVM.framework/Headers -I$(/usr/libexec/java_home | grep -o '.*jdk')"
 
 brew_install_or_upgrade 'Caskroom/cask/rstudio'
 
@@ -221,17 +233,38 @@ brew_cask_install 'google-refine'
 # sudo ln -s '~/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl /usr/local/bin/sublime'
 
 # install python
-sudo python get-pip.py
+sudo -H python get-pip.py
 
 # install CSVkit
-sudo pip install csvKit
+sudo -H pip install csvKit
 
 # Install Groskopf's new Agate tool
-sudo pip install Agate
+sudo -H pip install Agate
 
-# install CSVKit
-# shell command: python get-pip.py
-# then then pip install csvKit
+#Install various flavors of ruby via rvm
+rvm install ruby-1.8.7-p334
+rvm install ruby-1.9.3-p448
+rvm install ruby-2.2.4
+
+#Set ruby 1.9.3-p448 as default ruby.
+bash -l -c "rvm --default use ruby-1.9.3-p448"
+
+##PHASE II starts below. Still a work in progress.
+# PENTAHO
+#FIRST INSTALL JAVA JDK 8
+#jdk-8u65-macosx-x64.dmg
+#PUT IT ON S3
+#https://s3.amazonaws.com/associatedpress-datateam-devops/java/jdk-8u65-macosx-x64.dmg
+#curl -O https://s3.amazonaws.com/associatedpress-datateam-devops/java/jdk-8u65-macosx-x64.dmg
+
+#THIS WILL MOUNT THE DISK IMAGE
+#hdiutil mount jdk-8u65-macosx-x64.dmg
+
+#THIS WILL LAUNCH THE INSTALLER FOR JAVA
+#open /volumes/JDK\ 8\ Update\ 65/JDK\ 8\ Update\ 65.pkg
+
+#THEN INSTALL PENTAHO COMMUNITY EDITION
+#http://sourceforge.net/projects/pentaho/files/Data%20Integration/6.0/pdi-ce-6.0.1.0-386.zip/download
 
 # end custom configs
 
