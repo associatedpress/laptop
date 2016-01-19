@@ -221,7 +221,7 @@ brew_install_or_upgrade 'Caskroom/cask/rstudio'
 
 brew_cask_install 'slack'
 
-brew_cask_install 'iterm'
+brew_cask_install 'iterm2'
 
 brew_cask_install 'tabula'
 
