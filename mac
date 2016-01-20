@@ -231,10 +231,14 @@ brew_cask_install 'pgadmin3'
 brew_cask_install 'google-refine'
 
 # sublime from the command line:
-sudo ln -s "~/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /usr/local/bin/sublime
+#sudo ln -s "~/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /usr/local/bin/sublime
 
 # install python
 sudo -H python get-pip.py
+
+# install six (Python 2/3 compatibility library) properly with pip
+sudo rm -r $( python -c 'import os.path, six; print os.path.dirname(six.__file__)' )/six*
+sudo -H pip install six
 
 # install CSVkit
 sudo -H pip install csvKit
@@ -285,11 +289,11 @@ append_to_file "$HOME/.bashrc" 'precmd () { PS1="%{%F{166}%}[%~] %{%F{65}%}$(rvm
 append_to_file "$HOME/.bashrc" 'export CLICOLOR=1;'
 append_to_file "$HOME/.bashrc" 'export LSCOLORS=exfxcxdxbxegedabagacad;'
 
-if app_is_installed 'GitHub'; then
-  fancy_echo "It looks like you've already configured your GitHub SSH keys."
-  fancy_echo "If not, you can do it by signing in to the GitHub app on your Mac."
-elif [ ! -f "$HOME/.ssh/github_rsa.pub" ]; then
-  open ~/Applications/GitHub\ Desktop.app
-fi
+# if app_is_installed 'GitHub'; then
+#   fancy_echo "It looks like you've already configured your GitHub SSH keys."
+#   fancy_echo "If not, you can do it by signing in to the GitHub app on your Mac."
+# elif [ ! -f "$HOME/.ssh/github_rsa.pub" ]; then
+#   open ~/Applications/GitHub\ Desktop.app
+# fi
 
 fancy_echo 'All done!'
