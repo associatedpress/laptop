@@ -1,6 +1,5 @@
 Laptop
 ======
-[![Build Status](https://travis-ci.org/monfresh/laptop.svg)](https://travis-ci.org/monfresh/laptop)
 
 Laptop is a script to set up an OS X computer for web development.
 
@@ -38,26 +37,20 @@ time, then press `return` after each one to download and execute the
 script, respectively:
 
 ```sh
-curl --remote-name https://raw.githubusercontent.com/monfresh/laptop/master/mac
-bash mac 2>&1 | tee ~/laptop.log && source ~/.rvm/scripts/rvm
+git clone https://github.com/associatedpress/laptop.git
+bash laptop/mac 2>&1 | tee ~/laptop.log && source ~/.rvm/scripts/rvm
 ```
 
-The [script](https://github.com/monfresh/laptop/blob/master/mac) itself is
+The [script](https://github.com/associatedpress/laptop/blob/master/mac) itself is
 available in this repo for you to review if you want to see what it does
 and how it works.
 
 Note that the script will ask you to enter your OS X password at various
 points. This is the same password that you use to log in to your Mac.
-If you don't already have it installed, GitHub for Mac will launch
-automatically at the end of the script so you can set up everything you'll
-need to push code to GitHub.
 
 Once the script is done, quit and relaunch Terminal.
 
-More [detailed instructions with a video][video] are available in the Wiki.
-
 [Spotlight]: https://support.apple.com/en-us/HT204014
-[video]: https://github.com/monfresh/laptop/wiki/Detailed-installation-instructions-with-video
 
 What it sets up
 ---------------
@@ -75,7 +68,6 @@ What it sets up
 * [Postgres] for storing relational data
 * [RVM] for managing Ruby versions (includes the latest [Ruby])
 * [Sublime Text 3] for coding all the things
-* [Zsh] as your shell
 
 [Bundler]: http://bundler.io/
 [Flux]: https://justgetflux.com/
@@ -90,48 +82,9 @@ What it sets up
 [Ruby]: https://www.ruby-lang.org/en/
 [RVM]: https://github.com/wayneeseguin/rvm
 [Sublime Text 3]: http://www.sublimetext.com/3
-[Zsh]: http://www.zsh.org/
 
 It should take less than 15 minutes to install (depends on your machine and
 internet connection).
-
-The script also lightly customizes your Zsh prompt so that it displays your
-current directory in orange, followed by the current Ruby version or gemset in
-green, and sets the prompt character to `$`. It also allows you to easily
-distinguish directories from files when running `ls` by displaying directories
-in a different color. Below is a screenshot showing what the colors look like
-when using the default Terminal white background, the Solarized Dark theme, and the Solarized Light theme.
-
-![Terminal screenshots](http://cl.ly/image/19022S0q3H1b/download/Image%202015-05-12%20at%2011.31.04%20PM.png)
-
-If you want to use the [Solarized](http://ethanschoonover.com/solarized)
-themes, run the following commands in your Terminal:
-```bash
-cd ~
-
-curl --remote-name https://raw.githubusercontent.com/tomislav/osx-terminal.app-colors-solarized/master/Solarized%20Dark.terminal
-
-curl --remote-name https://raw.githubusercontent.com/tomislav/osx-terminal.app-colors-solarized/master/Solarized%20Light.terminal
-
-open Solarized%20Dark.terminal
-
-open Solarized%20Light.terminal
-```
-
-This will add the Solarized themes to your Terminal's Profiles, and if you want to set one of them as the default, go to your Terminal's Preferences,
-click on the Settings tab, scroll down to the Solarized Profile, click on it,
-then click the Default button. When you open a new window or tab (or if you quit and relaunch Terminal), it will use the Solarized theme.
-
-If you want to try out different prompt colors other than orange and green,
-open your `.zshrc` in Sublime Text:
-
-```sh
-subl ~/.zshrc
-```
-
-Then in the line that starts with `precmd`, replace `{166}` and `{65}` with
-any of the 256 possible [Xterm colors](http://upload.wikimedia.org/wikipedia/commons/9/95/Xterm_color_chart.png).
-Save the file, then open a new Terminal window or tab to see the changes.
 
 
 Customize in `~/.laptop.local`
@@ -194,7 +147,9 @@ Or, attach the whole log file as an attachment.
 Credits
 -------
 
-This laptop script is inspired by
+This laptop script is forked from
+[Moncef Belyamani's laptop](https://github.com/monfresh/laptop) script, which
+in turn was inspired by 
 [thoughbot's laptop](https://github.com/thoughtbot/laptop) script.
 
 ### Public domain
