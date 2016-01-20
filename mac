@@ -282,15 +282,6 @@ fi
 append_to_file "$HOME/.rvmrc" 'rvm_auto_reload_flag=2'
 append_to_file "$HOME/.rvm/gemsets/global.gems" 'bundler'
 
-# display pwd in orange, current ruby version or gemset in green,
-# and set prompt character to $
-# shellcheck disable=SC2016
-append_to_file "$HOME/.bashrc" 'precmd () { PS1="%{%F{166}%}[%~] %{%F{65}%}$(rvm-prompt) %{%f%}$ " }'
-
-# display directories and files in different colors when running ls
-append_to_file "$HOME/.bashrc" 'export CLICOLOR=1;'
-append_to_file "$HOME/.bashrc" 'export LSCOLORS=exfxcxdxbxegedabagacad;'
-
 # if app_is_installed 'GitHub'; then
 #   fancy_echo "It looks like you've already configured your GitHub SSH keys."
 #   fancy_echo "If not, you can do it by signing in to the GitHub app on your Mac."
