@@ -231,7 +231,9 @@ brew_cask_install 'pgadmin3'
 brew_cask_install 'google-refine'
 
 # sublime from the command line:
-#sudo ln -s "~/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /usr/local/bin/sublime
+if [ ! -h /usr/local/bin/sublime ]; then
+ sudo ln -s "~/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /usr/local/bin/sublime
+fi
 
 # install python
 sudo -H python get-pip.py
