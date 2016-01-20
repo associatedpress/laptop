@@ -68,6 +68,22 @@ What it sets up
 * [Postgres] for storing relational data
 * [RVM] for managing Ruby versions (includes the latest [Ruby])
 * [Sublime Text 3] for coding all the things
+* [R]
+* [RStudio]
+* [Slack]
+* [Tabula]
+* [PGAdmin3]
+* [Open Refine]
+* [Python]
+* [pip]
+* [CSVKit]
+* [Agate]
+* [ruby 1.8.7-p334]
+* [ruby 1.9.3-p448] Sets this as your default ruby in rvm
+* [JAVA 6 for OS X 10.10] Patch that allows newer versions of OS X to run apps requiring JAVA 6.
+* [PhantomJS] Headless wesite testing. (not yet working on El Capitan).
+* [bundler]
+* [Flux] Allows you to adjust your Mac's display color
 
 [Bundler]: http://bundler.io/
 [Flux]: https://justgetflux.com/
@@ -82,8 +98,27 @@ What it sets up
 [Ruby]: https://www.ruby-lang.org/en/
 [RVM]: https://github.com/wayneeseguin/rvm
 [Sublime Text 3]: http://www.sublimetext.com/3
+[R]: https://www.r-project.org/
+[RStudio]: https://www.rstudio.com/
+[Slack]: https://slack.com/
+[Tabula]: https://github.com/tabulapdf/tabula
+[PGAdmin3]: http://www.pgadmin.org/
+[Open Refine]: https://github.com/OpenRefine
+[Python]: https://www.python.org/
+[pip]: https://pypi.python.org/pypi/pip
+[CSVKit]: https://csvkit.readthedocs.org/en/0.9.1/
+[Agate]: http://agate.readthedocs.org/en/1.1.0/install.html
+[ruby 1.8.7-p334]
+[ruby 1.9.3-p448]
+[JAVA 6 for OS X 10.10]: https://support.apple.com/kb/dl1572?locale=en_US
+[PhantomJS]: http://phantomjs.org/
+[bundler]: http://bundler.io/
+[Flux]: https://justgetflux.com/
 
-It should take less than 15 minutes to install (depends on your machine and
+
+
+
+It should take less than 40 minutes to install (depends on your machine and
 internet connection).
 
 
