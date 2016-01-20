@@ -233,8 +233,6 @@ brew_cask_install 'google-refine'
 #Apparently no longer needed. But this line signs unknown apps allowing OS X users to open it. Leaving this while testing.
 #codesign -f -s - ~/Applications/Google\ Refine.app/Contents/MacOS/JavaApplicationStub
 
-
-
 # sublime from the command line:
 if [ ! -h /usr/local/bin/sublime ]; then
  sudo ln -s "~/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /usr/local/bin/sublime
@@ -256,7 +254,6 @@ sudo -H pip install Agate
 #Install various flavors of ruby via rvm
 rvm install ruby-1.8.7-p334
 rvm install ruby-1.9.3-p448
-rvm install ruby-2.2.4
 
 #Set ruby 1.9.3-p448 as default ruby.
 bash -l -c "rvm --default use ruby-1.9.3-p448"
