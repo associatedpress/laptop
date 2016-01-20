@@ -108,8 +108,6 @@ What it sets up
 [pip]: https://pypi.python.org/pypi/pip
 [CSVKit]: https://csvkit.readthedocs.org/en/0.9.1/
 [Agate]: http://agate.readthedocs.org/en/1.1.0/install.html
-[ruby 1.8.7-p334]
-[ruby 1.9.3-p448]
 [JAVA 6 for OS X 10.10]: https://support.apple.com/kb/dl1572?locale=en_US
 [PhantomJS]: http://phantomjs.org/
 [bundler]: http://bundler.io/
