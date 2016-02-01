@@ -38,7 +38,8 @@ script, respectively:
 
 ```sh
 git clone https://github.com/associatedpress/laptop.git
-bash laptop/mac 2>&1 | tee ~/laptop.log && source ~/.rvm/scripts/rvm
+cd laptop
+bash mac 2>&1 | tee ~/laptop.log && source ~/.rvm/scripts/rvm
 ```
 
 The [script](https://github.com/associatedpress/laptop/blob/master/mac) itself is
