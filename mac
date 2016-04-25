@@ -230,6 +230,10 @@ brew_cask_install 'pgadmin3'
 
 brew_cask_install 'google-refine'
 
+# Install browsers
+brew_cask_install 'firefox'
+brew_cask_install 'google-chrome'
+
 #Apparently no longer needed. But this line signs unknown apps allowing OS X users to open it. Leaving this while testing.
 #codesign -f -s - ~/Applications/Google\ Refine.app/Contents/MacOS/JavaApplicationStub
 
