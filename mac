@@ -255,6 +255,9 @@ sudo -H pip install csvKit
 # Install Groskopf's new Agate tool
 sudo -H pip install Agate
 
+# Install AWS command-line tools
+sudo -H pip install awscli
+
 #Install various flavors of ruby via rvm
 rvm install ruby-1.8.7-p334
 rvm install ruby-1.9.3-p448
