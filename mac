@@ -269,6 +269,15 @@ done
 #Set ruby 1.9.3-p448 as default ruby.
 bash -l -c "rvm --default use ruby-1.9.3-p448"
 
+
+# Install QGIS.
+brew_tap 'homebrew/python'
+brew_install_or_upgrade 'matplotlib'
+if [ ! -h /Library/Python/2.7/site-packages/matplotlib-override ]; then
+  sudo ln -s /System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python /Library/Python/2.7/site-packages/matplotlib-override
+fi
+brew_cask_install 'qgis'
+
 ##PHASE II starts below. Still a work in progress.
 # PENTAHO
 #FIRST INSTALL JAVA JDK 8
