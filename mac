@@ -258,9 +258,13 @@ sudo -H pip install Agate
 # Install AWS command-line tools
 sudo -H pip install awscli
 
-#Install various flavors of ruby via rvm
-rvm install ruby-1.8.7-p334
-rvm install ruby-1.9.3-p448
+# Install various flavors of Ruby via RVM, and ensure they have Bundler
+extra_rubies=( 'ruby-1.8.7-p334' 'ruby-1.9.3-p448' )
+for i in $(seq 0 $((${#extra_rubies[@]} - 1))); do
+  new_ruby=${extra_rubies[$i]}
+  rvm install ${new_ruby}
+  rvm use ${new_ruby} && gem_install_or_update 'bundler'
+done
 
 #Set ruby 1.9.3-p448 as default ruby.
 bash -l -c "rvm --default use ruby-1.9.3-p448"
