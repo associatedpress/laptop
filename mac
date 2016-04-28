@@ -258,6 +258,7 @@ select editor in "${options[@]}"; do
   break
 done
 append_to_file "$HOME/.bashrc" "export EDITOR='${new_editor}'"
+export EDITOR="${new_editor}"
 
 
 # installs old version of java needed for RStudio. ## ONLY USE IF rjava section below fails
