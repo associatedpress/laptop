@@ -230,6 +230,7 @@ select editor in "${options[@]}"; do
       ;;
     4)
       brew_install_or_upgrade 'macvim' '--with-override-system-vim'
+      brew linkapps macvim
       new_editor="gvim -f"
       ;;
     5)
