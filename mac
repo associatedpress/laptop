@@ -201,6 +201,11 @@ brew_cask_install 'github-desktop'
 # brew cask search xxxxx
 # brew search xxxxxx
 
+# Ensure our .bashrc manipulations actually get used, by `source`-ing them in
+# /etc/profile. That's owned by root, so we can't just use the nice
+# `append_to_file` function in this script. Let's take the parts we need and do
+# this in a sort of ugly way.
+sudo bash -c 'if ! grep -qs "^\[ -r \$HOME/\.bashrc \] && source \$HOME/\.bashrc$" /etc/profile; then echo "[ -r \$HOME/.bashrc ] && source \$HOME/.bashrc" >> /etc/profile; fi'
 
 # Ask user for a preferred text editor
 cat <<EOF
@@ -355,8 +360,6 @@ fi
 
 append_to_file "$HOME/.rvmrc" 'rvm_auto_reload_flag=2'
 append_to_file "$HOME/.rvm/gemsets/global.gems" 'bundler'
-
-append_to_file "$HOME/.bash_profile" 'source ~/.bashrc'
 
 # if app_is_installed 'GitHub'; then
 #   fancy_echo "It looks like you've already configured your GitHub SSH keys."
