@@ -195,12 +195,63 @@ brew_tap 'caskroom/versions'
 
 brew_cask_install 'flux'
 brew_cask_install 'github-desktop'
-brew_cask_install 'sublime-text3'
 
 # start custom configs
 ## fine more recipes like below
 # brew cask search xxxxx
 # brew search xxxxxx
+
+
+# Ask user for a preferred text editor
+cat <<EOF
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- TEXT EDITOR -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+Some programs, such as \`crontab\` and \`git commit\`, automatically open a
+text editor in which to make changes.
+
+Which text editor do you want to use in these situations?
+
+EOF
+
+PS3="Select an editor: "
+options=("Emacs" "nano" "Vim" "Vim (GUI)" "Sublime Text 2" "Sublime Text 3" "TextMate")
+select editor in "${options[@]}"; do
+  case "${REPLY}" in
+    1)
+      new_editor="emacs"
+      ;;
+    2)
+      new_editor="nano"
+      ;;
+    3)
+      new_editor="vim"
+      ;;
+    4)
+      brew_install_or_upgrade 'macvim' '--with-override-system-vim'
+      new_editor="gvim -f"
+      ;;
+    5)
+      brew_cask_install 'sublime-text'
+      new_editor="subl -w"
+      ;;
+    6)
+      brew_cask_install 'sublime-text3'
+      new_editor="subl -w"
+      ;;
+    7)
+      brew_cask_install 'textmate'
+      new_editor="mate -w"
+      ;;
+    *)
+      echo "I didn't understand that. Please try again."
+      continue
+      ;;
+  esac
+  break
+done
+append_to_file "$HOME/.bashrc" "export EDITOR='${new_editor}'"
 
 
 # installs old version of java needed for RStudio. ## ONLY USE IF rjava section below fails
